@@ -4,7 +4,7 @@
 
 - `DominoPontaDeQuina.Core`: regras e fluxo do jogo.
 - `DominoPontaDeQuina.Domain`: entidades e enums persistentes.
-- `DominoPontaDeQuina.Repository`: `DominoDbContext`, mapeamentos Fluent API e repositorios EF Core.
+- `DominoPontaDeQuina.Repository`: `DominoDbContext` e repositorios EF Core.
 - `DominoPontaDeQuina.Migrations`: aplicacao console usada como startup project para migrations.
 - `DominoPontaDeQuina.Tests`: testes automatizados do nucleo do jogo.
 
@@ -12,6 +12,7 @@
 
 `Usuario` representa a conta do aplicativo cliente e pode possuir varios `Jogador`, que sao perfis de jogo.
 `Jogo` representa uma partida armazenada para consulta de historico. `ParticipacaoJogo` liga um jogador a um jogo e registra sua posicao, pontuacao e resultado.
+`Usuario` e `Jogador` usam Data Annotations; `Jogo` e `ParticipacaoJogo` sao mapeados pelas convencoes do EF Core.
 
 Esta etapa prepara a persistencia e o futuro fluxo de autenticacao. API, endpoints, autenticacao e JWT estao fora do escopo.
 
@@ -29,7 +30,7 @@ dotnet build
 
 ## Migrations
 
-Os comandos devem usar `DominoPontaDeQuina.Migrations` como startup project e `DominoPontaDeQuina.Repository` como projeto do contexto:
+O `DominoDbContextFactory` configura SQLite com `Data Source=domino.db`. Execute os comandos na raiz do repositorio para criar o banco nessa pasta. Use `DominoPontaDeQuina.Migrations` como startup project e `DominoPontaDeQuina.Repository` como projeto do contexto:
 
 ```bash
 dotnet ef migrations add Inicial \
