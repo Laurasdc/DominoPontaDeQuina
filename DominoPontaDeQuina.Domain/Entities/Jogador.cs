@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DominoPontaDeQuina.Domain.Entities;
 
@@ -14,8 +13,7 @@ public class Jogador
 
     public Guid UsuarioId { get; set; }
 
-    [ForeignKey(nameof(UsuarioId))]
     public Usuario Usuario { get; set; } = null!;
 
-    public ICollection<ParticipacaoJogo> Participacoes { get; set; } = new List<ParticipacaoJogo>();
+    public ICollection<ParticipacaoPartida> Participacoes { get; set; } = new List<ParticipacaoPartida>();
 }

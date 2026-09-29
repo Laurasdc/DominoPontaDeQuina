@@ -38,7 +38,38 @@ namespace DominoPontaDeQuina.Repository.Migrations
                     b.ToTable("Jogadores");
                 });
 
-            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.Jogo", b =>
+            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.ParticipacaoPartida", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("JogadorId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid>("PartidaId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Pontuacao")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Posicao")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Vencedor")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JogadorId");
+
+                    b.HasIndex("PartidaId", "JogadorId")
+                        .IsUnique();
+
+                    b.ToTable("ParticipacoesPartida");
+                });
+
+            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.Partida", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,37 +86,7 @@ namespace DominoPontaDeQuina.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Jogos");
-                });
-
-            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.ParticipacaoJogo", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("JogadorId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("JogoId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Pontuacao")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Posicao")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Vencedor")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JogadorId");
-
-                    b.HasIndex("JogoId");
-
-                    b.ToTable("ParticipacoesJogo");
+                    b.ToTable("Partidas");
                 });
 
             modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.Usuario", b =>
@@ -128,7 +129,7 @@ namespace DominoPontaDeQuina.Repository.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.ParticipacaoJogo", b =>
+            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.ParticipacaoPartida", b =>
                 {
                     b.HasOne("DominoPontaDeQuina.Domain.Entities.Jogador", "Jogador")
                         .WithMany("Participacoes")
@@ -136,15 +137,15 @@ namespace DominoPontaDeQuina.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DominoPontaDeQuina.Domain.Entities.Jogo", "Jogo")
+                    b.HasOne("DominoPontaDeQuina.Domain.Entities.Partida", "Partida")
                         .WithMany("Participacoes")
-                        .HasForeignKey("JogoId")
+                        .HasForeignKey("PartidaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Jogador");
 
-                    b.Navigation("Jogo");
+                    b.Navigation("Partida");
                 });
 
             modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.Jogador", b =>
@@ -152,7 +153,7 @@ namespace DominoPontaDeQuina.Repository.Migrations
                     b.Navigation("Participacoes");
                 });
 
-            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.Jogo", b =>
+            modelBuilder.Entity("DominoPontaDeQuina.Domain.Entities.Partida", b =>
                 {
                     b.Navigation("Participacoes");
                 });
