@@ -14,7 +14,7 @@ public sealed class DominoDbContextFactory : IDesignTimeDbContextFactory<DominoD
     public DominoDbContext CreateDbContext(string[] args)
     {
         var configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
+            .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json", optional: false)
             .AddEnvironmentVariables()
             .Build();

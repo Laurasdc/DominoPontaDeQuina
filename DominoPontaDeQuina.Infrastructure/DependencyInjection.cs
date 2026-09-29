@@ -23,6 +23,7 @@ public static class DependencyInjection
         services.AddScoped<IParticipacaoRepository, ParticipacaoRepository>();
         services.AddScoped<ILanceRepository, LanceRepository>();
         services.AddScoped<IRankingRepository, RankingRepository>();
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         return services;
     }
 }
