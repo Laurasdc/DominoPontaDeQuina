@@ -1,10 +1,11 @@
+using DominoPontaDeQuina.Domain.Repositories;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class ParticipacaoPartidaRepository : RepositoryBase<ParticipacaoPartida>
+public class ParticipacaoPartidaRepository : RepositoryBase<ParticipacaoPartida>, IParticipacaoPartidaRepository
 {
     public ParticipacaoPartidaRepository(DominoDbContext context) : base(context) { }
 

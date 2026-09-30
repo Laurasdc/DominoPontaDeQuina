@@ -1,9 +1,10 @@
+using DominoPontaDeQuina.Domain.Repositories;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public abstract class RepositoryBase<TEntity> where TEntity : class
+public abstract class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : class
 {
     protected readonly DominoDbContext Context;
     protected DbSet<TEntity> Entidades => Context.Set<TEntity>();

@@ -1,10 +1,11 @@
+using DominoPontaDeQuina.Domain.Repositories;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class PartidaRepository : RepositoryBase<Partida>
+public class PartidaRepository : RepositoryBase<Partida>, IPartidaRepository
 {
     public PartidaRepository(DominoDbContext context) : base(context) { }
 

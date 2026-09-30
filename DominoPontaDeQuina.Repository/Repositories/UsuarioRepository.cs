@@ -1,10 +1,11 @@
+using DominoPontaDeQuina.Domain.Repositories;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class UsuarioRepository : RepositoryBase<Usuario>
+public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
 {
     public UsuarioRepository(DominoDbContext context) : base(context) { }
 

@@ -7,4 +7,7 @@
   <Project Path="DominoPontaDeQuina.Repository/DominoPontaDeQuina.Repository.csproj" />
   <Project Path="DominoPontaDeQuina.Migrations/DominoPontaDeQuina.Migrations.csproj" />
   <Project Path="DominoPontaDeQuina.Tests/DominoPontaDeQuina.Tests.csproj" />
+  <Project Path="DominoPontaDeQuina.Application/DominoPontaDeQuina.Application.csproj" />
+  <Project Path="DominoPontaDeQuina.Console/DominoPontaDeQuina.Console.csproj" />
+  <Project Path="DominoPontaDeQuina.DI.Tests/DominoPontaDeQuina.DI.Tests.csproj" />
 </Solution>

@@ -1,10 +1,11 @@
+using DominoPontaDeQuina.Domain.Repositories;
 using DominoPontaDeQuina.Domain.Entities;
 using DominoPontaDeQuina.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace DominoPontaDeQuina.Repository.Repositories;
 
-public class JogadorRepository : RepositoryBase<Jogador>
+public class JogadorRepository : RepositoryBase<Jogador>, IJogadorRepository
 {
     public JogadorRepository(DominoDbContext context) : base(context) { }
 
