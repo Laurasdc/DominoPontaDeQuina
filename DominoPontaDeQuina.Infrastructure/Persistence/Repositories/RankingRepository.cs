@@ -15,6 +15,7 @@ public sealed class RankingRepository : EfRepository<Ranking>, IRankingRepositor
     public async Task<IReadOnlyList<Ranking>> ObterAsync(CancellationToken cancellationToken = default)
     {
         return await db.Rankings.AsNoTracking()
+            .Include(ranking => ranking.Jogador)
             .OrderByDescending(ranking => ranking.Vitorias)
             .ThenBy(ranking => ranking.Jogador.Nome)
             .ToListAsync(cancellationToken);
